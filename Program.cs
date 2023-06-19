@@ -8,16 +8,30 @@
     return array;
 }
 
-void PrintStringArray(string[] array)
+void PrintStringArray(string[] array, bool isNotNullElements)
 {
-    for (int i = 0; i < array.Length; i++)
+    if (isNotNullElements)
     {
-        Console.Write(array[i] + " ");
+        if (array[0] != null) Console.Write($"['{array[0]}'");
+        for (int i = 1; i < array.Length; i++)
+        {
+            if (array[i] != null) 
+            Console.Write($", '{array[i]}'");
+        }
+        Console.Write("]");
     }
-    Console.WriteLine("\n");
+    else
+    {
+        Console.Write($"['{array[0]}'");
+        for (int i = 1; i < array.Length; i++)
+        {
+            Console.Write($", '{array[i]}'");
+        }
+        Console.Write("]");
+    }
 }
 
-string [] CreateArrayWithElementsOf3letters ( string[] array)
+string[] CreateArrayWithElementsOf3letters(string[] array)
 {
     string[] partialArray = new string[array.Length];
 
@@ -49,6 +63,10 @@ string[] stringArray = new string[size];
 
 stringArray = CreateStringArray(stringArray);
 
-PrintStringArray(stringArray);
+string[] partialArray = new string[size];
 
-PrintStringArray(CreateArrayWithElementsOf3letters(stringArray));
+partialArray = CreateArrayWithElementsOf3letters(stringArray);
+
+PrintStringArray(stringArray, false);
+Console.Write("--> ");
+PrintStringArray(partialArray, true);
