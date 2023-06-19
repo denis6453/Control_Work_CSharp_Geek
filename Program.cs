@@ -12,7 +12,8 @@ void PrintStringArray(string[] array, bool isNotNullElements)
 {
     if (isNotNullElements)
     {
-        if (array[0] != null) Console.Write($"['{array[0]}'");
+        Console.Write($"[");
+        if (array[0] != null) Console.Write($"'{array[0]}'");
         for (int i = 1; i < array.Length; i++)
         {
             if (array[i] != null) 
